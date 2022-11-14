@@ -39,6 +39,9 @@ class Team:
     def get_played(self):
         return self.__played
 
+    def add_played(self):
+        self.__played += 1
+
     def get_wins(self):
         return self.__wins
 

@@ -129,18 +129,31 @@ def clear_data():
 
 
 # ===== TEAMS ===== #
-team1 = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, False)
-team2 = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, True)
-team3 = Team("Croatian Volleyball Federation", "Croatia", 14, False, False)
-team4 = Team("East German Volleyball Federation", "Germany", 11, False, False)
-team5 = Team("Nederlandse Volleybalbond", "Netherlands", 21, False, False)
-team6 = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, True)
+poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, False)
+bulgaria = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, True)
+croatia = Team("Croatian Volleyball Federation", "Croatia", 14, False, False)
+germany = Team("East German Volleyball Federation", "Germany", 11, False, False)
+netherlands = Team("Nederlandse Volleybalbond", "Netherlands", 21, False, False)
+hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, True)
 
-team_list = [team1, team2, team3, team4, team5, team6]
+global team_list
+team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
 global current                  # current team
 global team
 team = team_list[0]             # initialize to first match
 # ===== END OF TEAMS ===== #
+
+# teams = {"poland": poland, "bulgaria": bulgaria}
+#
+# tournament_teams = [poland, bulgaria]
+#
+# def tournament_hadler(tournament_teams, winning_team, loosing_team):
+#     for t in tournament_teams:
+#         t.add_played()
+#     winning_team.mark_win()
+#     loosing_team.mark_loss()
+#
+# teams.get("poland").add_goals(1)
 
 
 # ===== GUI ===== #
