@@ -18,6 +18,9 @@ class Team:
         self.__losses = 0
         self.__draws = 0
 
+    def get_country(self):
+        return self.__country
+
     def add_goals(self, points):
         self.__points += points
 

@@ -1,7 +1,8 @@
 from tkinter import *
+import tkinter as tk
 from PIL import ImageTk, Image
 
-from NPalej_Details import Team
+from Team import Team
 
 window = Tk()
 window.geometry("460x390")
@@ -53,9 +54,35 @@ def display(index):
 
 def next_button():
     global current
+    global team_list
     if current > 0:
         current -= 1
         display(current)
+
+    if current == 0:
+        img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 1:
+        img = ImageTk.PhotoImage(Image.open("images/bulgaria.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 2:
+        img = ImageTk.PhotoImage(Image.open("images/croatia.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 3:
+        img = ImageTk.PhotoImage(Image.open("images/germany.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 4:
+        img = ImageTk.PhotoImage(Image.open("images/netherlands.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 5:
+        img = ImageTk.PhotoImage(Image.open("images/hungary.jpg"))
+        panel.configure(image=img)
+        panel.image=img
 
 
 def previous_button():
@@ -63,6 +90,31 @@ def previous_button():
     if current < (len(team_list) - 1):
         current += 1
         display(current)
+
+    if current == 0:
+        img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 1:
+        img = ImageTk.PhotoImage(Image.open("images/bulgaria.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 2:
+        img = ImageTk.PhotoImage(Image.open("images/croatia.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 3:
+        img = ImageTk.PhotoImage(Image.open("images/germany.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 4:
+        img = ImageTk.PhotoImage(Image.open("images/netherlands.jpg"))
+        panel.configure(image=img)
+        panel.image=img
+    elif current == 5:
+        img = ImageTk.PhotoImage(Image.open("images/hungary.jpg"))
+        panel.configure(image=img)
+        panel.image=img
 
 
 def clear_data():
@@ -90,24 +142,6 @@ def reset_data():
     display(current)
 
 
-# change picture method
-def change_pic():
-    global current
-    global team_list
-    if team_list == poland:
-        canvas.create_image(45, 30, anchor=CENTER, image=img)
-    elif team_list == bulgaria:
-        canvas.create_image(45, 30, anchor=CENTER, image=img2)
-    elif team_list == croatia:
-        canvas.create_image(45, 30, anchor=CENTER, image=img3)
-    elif team_list == germany:
-        canvas.create_image(45, 30, anchor=CENTER, image=img4)
-    elif team_list == netherlands:
-        canvas.create_image(45, 30, anchor=CENTER, image=img5)
-    elif team_list == hungary:
-        canvas.create_image(45, 30, anchor=CENTER, image=img6)
-
-
 # ===== TEAMS ===== #
 poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, False)
 bulgaria = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, True)
@@ -121,6 +155,7 @@ team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
 global current  # current team
 global team
 team = team_list[0]  # initialize to first match
+
 
 # ===== GUI ===== #
 frame = Frame(window, width=200, height=200)
@@ -144,41 +179,11 @@ country_entry = Entry(frame)
 country_entry.insert(END, '')
 country_entry.grid(row=1, column=1, sticky=W + E)
 
-# creating canvas to place flag image
-canvas = Canvas(window, width=200, height=55)
-canvas.place(x=270, y=104)
-canvas.create_image(45, 30, anchor=CENTER)
-
-# Poland flag
-img = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\poland.jpg")
-# canvas.create_image(45, 30, anchor=CENTER, image=img)
-
-# bulgaria flag
-img2 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                       "dev-cloud\\python-project\\images\\bulgaria.png")
-# canvas.create_image(30, 30, anchor=CENTER, image=img2)
-
-# croatia flag
-img3 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                       "dev-cloud\\python-project\\images\\croatia.png")
-# canvas.create_image(30, 30, anchor=CENTER, image=img3)
-
-# germany flag
-img4 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                       "dev-cloud\\python-project\\images\\germany.png")
-# canvas.create_image(30, 30, anchor=CENTER, image=img4)
-
-# netherlands flag
-img5 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                       "dev-cloud\\python-project\\images\\netherlands.png")
-# canvas.create_image(30, 30, anchor=CENTER, image=img5)
-
-# hungary flag
-img6 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                       "dev-cloud\\python-project\\images\\hungary.png")
-# canvas.create_image(30, 30, anchor=CENTER, image=img6)
-# flags = [img, img2, img3, img4, img5, img6]
+# placing first image on screen
+img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
+panel = tk.Label(window, image=img)
+panel.image = img
+panel.place(x=270, y=100)
 
 # squad
 squad = Label(frame, text="Squad", fg="black", width=15, font=("arial", 10, "bold"))
@@ -256,6 +261,6 @@ previous.grid(row=16, column=0, columnspan=2, sticky=W + E)
 next_button = Button(frame, text="Next", fg="black", font=("arial", 10, "bold"), command=previous_button)
 next_button.grid(row=16, column=2, columnspan=2, sticky=W + E)
 
-display(0)
 
+display(0)
 mainloop()

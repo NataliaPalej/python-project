@@ -1,6 +1,6 @@
 from tkinter import *
 
-from NPalej_Details import Team
+from Team import Team
 
 window = Tk()
 window.geometry("500x450")
