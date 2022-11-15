@@ -1,7 +1,3 @@
-# _author_ = "John Oakey"
-# A Basic multi-screen demo
-# PRELIMINARY HOUSE KEEPING
-
 # only one of the following SHOULD be needed but testing cross platform
 # indicates to me one works on windows and the other works on Debian (Unix)
 import tkinter as tk
@@ -106,12 +102,5 @@ class ScreenNo2:
     def write_message2(self):
         self.anotherLabel.pack(anchor='nw', padx=20, side=BOTTOM) # GUI display, will not be duplicated with multiple presses
         self.anotherLabel.configure(bg='cyan')
-
-
-
-
-
-
-
 
 window.mainloop()

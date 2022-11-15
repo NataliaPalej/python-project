@@ -91,11 +91,21 @@ def reset_data():
 
 
 # change picture method
-#def change_pic():
-    #photo1 = ImageTk.PhotoImage(Image.open("\\images\\poland.jpg"))
-    #labelname.configure(image=photo1)
-    #print("updated")
-    #window.update()
+def change_pic():
+    global current
+    global team_list
+    if team_list == poland:
+        canvas.create_image(45, 30, anchor=CENTER, image=img)
+    elif team_list == bulgaria:
+        canvas.create_image(45, 30, anchor=CENTER, image=img2)
+    elif team_list == croatia:
+        canvas.create_image(45, 30, anchor=CENTER, image=img3)
+    elif team_list == germany:
+        canvas.create_image(45, 30, anchor=CENTER, image=img4)
+    elif team_list == netherlands:
+        canvas.create_image(45, 30, anchor=CENTER, image=img5)
+    elif team_list == hungary:
+        canvas.create_image(45, 30, anchor=CENTER, image=img6)
 
 
 # ===== TEAMS ===== #
@@ -108,9 +118,9 @@ hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, True)
 
 global team_list
 team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
-global current          # current team
+global current  # current team
 global team
-team = team_list[0]     # initialize to first match
+team = team_list[0]  # initialize to first match
 
 # ===== GUI ===== #
 frame = Frame(window, width=200, height=200)
@@ -142,34 +152,33 @@ canvas.create_image(45, 30, anchor=CENTER)
 # Poland flag
 img = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
                       "dev-cloud\\python-project\\images\\poland.jpg")
-canvas.create_image(45, 30, anchor=CENTER, image=img)
+# canvas.create_image(45, 30, anchor=CENTER, image=img)
 
 # bulgaria flag
 img2 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\bulgaria.png")
-#canvas.create_image(30, 30, anchor=CENTER, image=img2)
+                       "dev-cloud\\python-project\\images\\bulgaria.png")
+# canvas.create_image(30, 30, anchor=CENTER, image=img2)
 
 # croatia flag
 img3 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\croatia.png")
-#canvas.create_image(30, 30, anchor=CENTER, image=img3)
+                       "dev-cloud\\python-project\\images\\croatia.png")
+# canvas.create_image(30, 30, anchor=CENTER, image=img3)
 
 # germany flag
 img4 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\germany.png")
-#canvas.create_image(30, 30, anchor=CENTER, image=img4)
+                       "dev-cloud\\python-project\\images\\germany.png")
+# canvas.create_image(30, 30, anchor=CENTER, image=img4)
 
 # netherlands flag
 img5 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\netherlands.png")
-#canvas.create_image(30, 30, anchor=CENTER, image=img5)
+                       "dev-cloud\\python-project\\images\\netherlands.png")
+# canvas.create_image(30, 30, anchor=CENTER, image=img5)
 
 # hungary flag
 img6 = PhotoImage(file="C:\\Users\\Natalia\\Desktop\\Software Design with AI in Cloud\\Year_2\\software-"
-                      "dev-cloud\\python-project\\images\\hungary.png")
-#canvas.create_image(30, 30, anchor=CENTER, image=img6)
-
-#flags = [img, img2, img3, img4, img5, img6]
+                       "dev-cloud\\python-project\\images\\hungary.png")
+# canvas.create_image(30, 30, anchor=CENTER, image=img6)
+# flags = [img, img2, img3, img4, img5, img6]
 
 # squad
 squad = Label(frame, text="Squad", fg="black", width=15, font=("arial", 10, "bold"))
