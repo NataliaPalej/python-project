@@ -76,3 +76,4 @@ class Team:
     def mark_loss(self):
         self.__played += 1
         self.__losses += 1
+
