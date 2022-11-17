@@ -2,265 +2,203 @@ from tkinter import *
 import tkinter as tk
 from PIL import ImageTk, Image
 
-from Team import Team
 
-window = Tk()
-window.geometry("460x390")
-window.title("Volleyball Matches")
+class DetailScreen:
+    def __init__(self, window2, teams):
+        self.team_list = teams
+        self.current = 0  # current team
+        self.team = self.team_list[0]  # initialize to first match
 
+        # ===== GUI ===== #
+        self.frame = tk.Frame(window2, width=200, height=200)
+        self.frame.place(x=10, y=80)
 
-# Event Handling Methods
-def display(index):
-    global current
-    global team
-    team = team_list[index]
-    current = index
-    association_entry.delete(0, END)
-    association_entry.insert(END, team.get_association())
+        # title label
+        self.label1 = Label(window2, text="Volleyball Teams", fg="black", bg="pink", font=("arial", 16, "bold"))
+        self.label1.place(x=140, y=30)  # place on screen
 
-    country_entry.delete(0, END)
-    country_entry.insert(END, team.get_country())
+        # association
+        self.association = Label(self.frame, text="Association", fg="black", width=15, font=("arial", 10, "bold"))
+        self.association.grid(row=0, column=0, sticky=W + E)
+        self.association_entry = Entry(self.frame)
+        self.association_entry.insert(END, '')
+        self.association_entry.grid(row=0, column=1, columnspan=3, sticky=W + E)
 
-    squad_entry.delete(0, END)
-    squad_entry.insert(END, team.get_squad())
+        # country
+        self.country = Label(self.frame, text="Country", fg="black", width=15, font=("arial", 10, "bold"))
+        self.country.grid(row=1, column=0, sticky=W + E)
+        self.country_entry = Entry(self.frame)
+        self.country_entry.insert(END, '')
+        self.country_entry.grid(row=1, column=1, sticky=W + E)
 
-    played_entry.delete(0, END)
-    played_entry.insert(END, team.get_played())
+        # placing first image on screen
+        self.img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
+        self.panel = tk.Label(window2, image=self.img)
+        self.panel.image = self.img
+        self.panel.place(x=270, y=100)
 
-    wins_entry.delete(0, END)
-    wins_entry.insert(END, team.get_wins())
+        # squad
+        self.squad = Label(self.frame, text="Squad", fg="black", width=15, font=("arial", 10, "bold"))
+        self.squad.grid(row=2, column=0, sticky=W + E)
+        self.squad_entry = Entry(self.frame)
+        self.squad_entry.insert(END, '0')
+        self.squad_entry.grid(row=2, column=1, sticky=W + E)
 
-    draws_entry.delete(0, END)
-    draws_entry.insert(END, team.get_draws())
+        # played
+        self.played = Label(self.frame, text="Played", fg="black", width=15, font=("arial", 10, "bold"))
+        self.played.grid(row=3, column=0, sticky=W + E)
+        self.played_entry = Entry(self.frame)
+        self.played_entry.insert(END, '0')
+        self.played_entry.grid(row=3, column=1, sticky=W + E)
 
-    losses_entry.delete(0, END)
-    losses_entry.insert(END, team.get_losses())
+        # wins
+        self.wins = Label(self.frame, text="Wins", fg="black", width=7, font=("arial", 10, "bold"))
+        self.wins.grid(row=5, column=0)
+        self.wins_entry = Entry(self.frame)
+        self.wins_entry.insert(END, '0')
+        self.wins_entry.grid(row=5, column=1)
 
-    points_entry.delete(0, END)
-    points_entry.insert(END, team.get_points())
+        # losses
+        self.losses = Label(self.frame, text="Losses", fg="black", width=7, font=("arial", 10, "bold"))
+        self.losses.grid(row=5, column=2)
+        self.losses_entry = Entry(self.frame)
+        self.losses_entry.insert(END, '0')
+        self.losses_entry.grid(row=5, column=3)
 
-    injury = team.get_injury()
-    if injury:
-        var_cb1.set(1)
-    else:
-        var_cb1.set(0)
+        # draws
+        self.draws = Label(self.frame, text="Draws", fg="black", width=15, font=("arial", 10, "bold"))
+        self.draws.grid(row=7, column=0, sticky=W + E)
+        self.draws_entry = Entry(self.frame)
+        self.draws_entry.insert(END, '0')
+        self.draws_entry.grid(row=7, column=1, sticky=W + E, columnspan=4)
 
-    cancelled = team.get_cancelled()
-    if cancelled:
-        var_cb2.set(1)
-    else:
-        var_cb2.set(0)
+        # points
+        self.points = Label(self.frame, text="Scores", fg="black", width=15, font=("arial", 10, "bold"))
+        self.points.grid(row=8, column=0, sticky=W + E)
+        self.points_entry = Entry(self.frame)
+        self.points_entry.insert(END, '0')
+        self.points_entry.grid(row=8, column=1, sticky=W + E)
 
+        # checkbox
+        # injury
+        self.var_cb1 = IntVar()  # 0 unchecked, 1 checked
+        self.cb1 = Checkbutton(self.frame, text="Injury", variable=self.var_cb1)
+        self.cb1.grid(row=9, column=0, columnspan=1)
 
-def next_button():
-    global current
-    global team_list
-    if current > 0:
-        current -= 1
-        display(current)
+        # cancelled
+        self.var_cb2 = IntVar()  # 0 unchecked, 1 checked
+        self.cb2 = Checkbutton(self.frame, text="Cancelled", variable=self.var_cb2)
+        self.cb2.grid(row=9, column=1, columnspan=1)
 
-    if current == 0:
-        img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 1:
-        img = ImageTk.PhotoImage(Image.open("images/bulgaria.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 2:
-        img = ImageTk.PhotoImage(Image.open("images/croatia.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 3:
-        img = ImageTk.PhotoImage(Image.open("images/germany.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 4:
-        img = ImageTk.PhotoImage(Image.open("images/netherlands.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 5:
-        img = ImageTk.PhotoImage(Image.open("images/hungary.jpg"))
-        panel.configure(image=img)
-        panel.image=img
+        # wins percentage
+        self.win_percent_button = Button(self.frame, text="Wins %", fg="black", font=("arial", 10, "bold"), command=self.percent_win)
+        self.win_percent_button.grid(row=10, column=0, sticky=W + E)
 
+        self.wins_per = Entry(self.frame)
+        self.wins_per.insert(END, '')
+        self.wins_per.grid(row=10, column=1, sticky=E)
 
-def previous_button():
-    global current
-    if current < (len(team_list) - 1):
-        current += 1
-        display(current)
+        # blank line
+        self.labelBlank = Label(self.frame, text=" ", width=15, font=("arial", 10, "bold"))
+        self.labelBlank.grid(row=14, column=0, columnspan=2, sticky=W + E)
 
-    if current == 0:
-        img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 1:
-        img = ImageTk.PhotoImage(Image.open("images/bulgaria.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 2:
-        img = ImageTk.PhotoImage(Image.open("images/croatia.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 3:
-        img = ImageTk.PhotoImage(Image.open("images/germany.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 4:
-        img = ImageTk.PhotoImage(Image.open("images/netherlands.jpg"))
-        panel.configure(image=img)
-        panel.image=img
-    elif current == 5:
-        img = ImageTk.PhotoImage(Image.open("images/hungary.jpg"))
-        panel.configure(image=img)
-        panel.image=img
+        # reset
+        self.reset = Button(self.frame, text="RESET", fg="black", font=("arial", 10, "bold"), command=self.reset_data)
+        self.reset.grid(row=15, column=0, columnspan=4, sticky=W + E)
+
+        # previous and next button
+        self.previous = Button(self.frame, text="Previous", fg="black", font=("arial", 10, "bold"), command=self.previous_button)
+        self.previous.grid(row=16, column=0, columnspan=2, sticky=W + E)
+
+        self.next_button = Button(self.frame, text="Next", fg="black", font=("arial", 10, "bold"), command=self.next_button)
+        self.next_button.grid(row=16, column=2, columnspan=2, sticky=W + E)
 
 
-def clear_data():
-    association_entry.delete(0, END)
-    country_entry.delete(0, END)
-    squad_entry.delete(0, END)
-    played_entry.delete(0, END)
-    wins_entry.delete(0, END)
-    losses_entry.delete(0, END)
-    draws_entry.delete(0, END)
-    wins_per.delete(0, END)
-    var_cb1.set(0)
-    var_cb2.set(0)
+
+    # Event Handling Methods
+    def display(self, index):
+        self.current = index
+        team = self.team_list[index]
+        self.association_entry.delete(0, END)
+        self.association_entry.insert(END, team.get_association())
+
+        self.country_entry.delete(0, END)
+        self.country_entry.insert(END, team.get_country())
+
+        self.squad_entry.delete(0, END)
+        self.squad_entry.insert(END, team.get_squad())
+
+        self.played_entry.delete(0, END)
+        self.played_entry.insert(END, team.get_played())
+
+        self.wins_entry.delete(0, END)
+        self.wins_entry.insert(END, team.get_wins())
+
+        self.draws_entry.delete(0, END)
+        self.draws_entry.insert(END, team.get_draws())
+
+        self.losses_entry.delete(0, END)
+        self.losses_entry.insert(END, team.get_losses())
+
+        self.points_entry.delete(0, END)
+        self.points_entry.insert(END, team.get_points())
+
+        injury = team.get_injury()
+        if injury:
+            self.var_cb1.set(1)
+        else:
+            self.var_cb1.set(0)
+
+        cancelled = team.get_cancelled()
+        if cancelled:
+            self.var_cb2.set(1)
+        else:
+            self.var_cb2.set(0)
 
 
-def percent_win():
-    result = team.get_percent_win()
-    wins_per.delete(0, END)
-    wins_per.insert(END, (str(result) + " %"))
+    def next_button(self):
+        if self.current < (len(self.team_list) - 1):
+            self.current += 1
+            self.display(self.current)
+
+        team_name = self.team_list[self.current].get_country().lower()
+        img = ImageTk.PhotoImage(Image.open("images/"+team_name+".jpg"))
+        self.panel.configure(image=img)
+        self.panel.image=img
 
 
-def reset_data():
-    global current
-    team.reset_all()
-    display(current)
+
+    def previous_button(self):
+        if self.current > 0:
+            self.current -= 1
+            self.display(self.current)
+
+        team_name = self.team_list[self.current].get_country().lower()
+        img = ImageTk.PhotoImage(Image.open("images/"+team_name+".jpg"))
+        self.panel.configure(image=img)
+        self.panel.image=img
 
 
-# ===== TEAMS ===== #
-poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, False)
-bulgaria = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, True)
-croatia = Team("Croatian Volleyball Federation", "Croatia", 14, False, False)
-germany = Team("East German Volleyball Federation", "Germany", 11, False, False)
-netherlands = Team("Nederlandse Volleybalbond", "Netherlands", 21, False, False)
-hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, True)
-
-global team_list
-team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
-global current  # current team
-global team
-team = team_list[0]  # initialize to first match
+    def clear_data(self):
+        self.association_entry.delete(0, END)
+        self.country_entry.delete(0, END)
+        self.squad_entry.delete(0, END)
+        self.played_entry.delete(0, END)
+        self.wins_entry.delete(0, END)
+        self.losses_entry.delete(0, END)
+        self.draws_entry.delete(0, END)
+        self.wins_per.delete(0, END)
+        self.var_cb1.set(0)
+        self.var_cb2.set(0)
 
 
-# ===== GUI ===== #
-frame = Frame(window, width=200, height=200)
-frame.place(x=10, y=80)
-
-# title label
-label1 = Label(window, text="Volleyball Teams", fg="black", bg="pink", font=("arial", 16, "bold"))
-label1.place(x=140, y=30)  # place on screen
-
-# association
-association = Label(frame, text="Association", fg="black", width=15, font=("arial", 10, "bold"))
-association.grid(row=0, column=0, sticky=W + E)
-association_entry = Entry(frame)
-association_entry.insert(END, '')
-association_entry.grid(row=0, column=1, columnspan=3, sticky=W + E)
-
-# country
-country = Label(frame, text="Country", fg="black", width=15, font=("arial", 10, "bold"))
-country.grid(row=1, column=0, sticky=W + E)
-country_entry = Entry(frame)
-country_entry.insert(END, '')
-country_entry.grid(row=1, column=1, sticky=W + E)
-
-# placing first image on screen
-img = ImageTk.PhotoImage(Image.open("images/poland.jpg"))
-panel = tk.Label(window, image=img)
-panel.image = img
-panel.place(x=270, y=100)
-
-# squad
-squad = Label(frame, text="Squad", fg="black", width=15, font=("arial", 10, "bold"))
-squad.grid(row=2, column=0, sticky=W + E)
-squad_entry = Entry(frame)
-squad_entry.insert(END, '0')
-squad_entry.grid(row=2, column=1, sticky=W + E)
-
-# played
-played = Label(frame, text="Played", fg="black", width=15, font=("arial", 10, "bold"))
-played.grid(row=3, column=0, sticky=W + E)
-played_entry = Entry(frame)
-played_entry.insert(END, '0')
-played_entry.grid(row=3, column=1, sticky=W + E)
-
-# wins
-wins = Label(frame, text="Wins", fg="black", width=7, font=("arial", 10, "bold"))
-wins.grid(row=5, column=0)
-wins_entry = Entry(frame)
-wins_entry.insert(END, '0')
-wins_entry.grid(row=5, column=1)
-
-# losses
-losses = Label(frame, text="Losses", fg="black", width=7, font=("arial", 10, "bold"))
-losses.grid(row=5, column=2)
-losses_entry = Entry(frame)
-losses_entry.insert(END, '0')
-losses_entry.grid(row=5, column=3)
-
-# draws
-draws = Label(frame, text="Draws", fg="black", width=15, font=("arial", 10, "bold"))
-draws.grid(row=7, column=0, sticky=W + E)
-draws_entry = Entry(frame)
-draws_entry.insert(END, '0')
-draws_entry.grid(row=7, column=1, sticky=W + E, columnspan=4)
-
-# points
-points = Label(frame, text="Scores", fg="black", width=15, font=("arial", 10, "bold"))
-points.grid(row=8, column=0, sticky=W + E)
-points_entry = Entry(frame)
-points_entry.insert(END, '0')
-points_entry.grid(row=8, column=1, sticky=W + E)
-
-# checkbox
-# injury
-var_cb1 = IntVar()  # 0 unchecked, 1 checked
-cb1 = Checkbutton(frame, text="Injury", variable=var_cb1)
-cb1.grid(row=9, column=0, columnspan=1)
-
-# cancelled
-var_cb2 = IntVar()  # 0 unchecked, 1 checked
-cb2 = Checkbutton(frame, text="Cancelled", variable=var_cb2)
-cb2.grid(row=9, column=1, columnspan=1)
-
-# wins percentage
-win_percent_button = Button(frame, text="Wins %", fg="black", font=("arial", 10, "bold"), command=percent_win)
-win_percent_button.grid(row=10, column=0, sticky=W + E)
-
-wins_per = Entry(frame)
-wins_per.insert(END, '')
-wins_per.grid(row=10, column=1, sticky=E)
-
-# blank line
-labelBlank = Label(frame, text=" ", width=15, font=("arial", 10, "bold"))
-labelBlank.grid(row=14, column=0, columnspan=2, sticky=W + E)
-
-# reset
-reset = Button(frame, text="RESET", fg="black", font=("arial", 10, "bold"), command=reset_data)
-reset.grid(row=15, column=0, columnspan=4, sticky=W + E)
-
-# previous and next button
-previous = Button(frame, text="Previous", fg="black", font=("arial", 10, "bold"), command=next_button)
-previous.grid(row=16, column=0, columnspan=2, sticky=W + E)
-
-next_button = Button(frame, text="Next", fg="black", font=("arial", 10, "bold"), command=previous_button)
-next_button.grid(row=16, column=2, columnspan=2, sticky=W + E)
+    def percent_win(self):
+        result = self.team.get_percent_win()
+        self.wins_per.delete(0, END)
+        self.wins_per.insert(END, (str(result) + " %"))
 
 
-display(0)
-mainloop()
+    def reset_data(self):
+        self.team.reset_all()
+        self.display(self.current)
+
