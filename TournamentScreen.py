@@ -3,6 +3,11 @@ import tkinter as tk
 from PIL import ImageTk, Image
 from random import choice
 
+# TODO: ADD SUBMIT AND CANCELLED BUTTONS
+# TODO: ADD DROPDOWNS TO THE SCORE
+# TODO: CHANGE THE LAYOUT TO ADJUST THE LOCATION OF THE FLAGS
+# TODO: disable screen resizing
+
 class TournamentScreen:
     def __init__(self, window2, teams):
         team1, team2 = self.get_random_teams(teams)
@@ -23,12 +28,12 @@ class TournamentScreen:
         self.team2_button.configure(height=2, width=20)
 
         # placing first image on screen
-        self.img = ImageTk.PhotoImage(Image.open("images/"+team1.lower()+".jpg"))
+        self.img = ImageTk.PhotoImage(Image.open("images/"+str(team1).lower()+".jpg"))
         self.panel = tk.Label(window2, image=self.img)
         self.panel.image = self.img
         self.panel.place(x=170, y=100)
 
-        self.img2 = ImageTk.PhotoImage(Image.open("images/"+team2.lower()+".jpg"))
+        self.img2 = ImageTk.PhotoImage(Image.open("images/"+str(team2).lower()+".jpg"))
         self.panel = tk.Label(window2, image=self.img2)
         self.panel.image = self.img2
         self.panel.place(x=370, y=100)
@@ -51,11 +56,14 @@ class TournamentScreen:
         self.anotherLabel.configure(bg='cyan')
 
 
-    def get_random_teams(self, teams):
-        team1 = choice(list(teams))
-        team2 = choice(list(teams))
+    @staticmethod
+    def get_random_teams(teams):
+        team1 = choice(teams)
+        team1 = team1.get_country()
+        team2 = choice(teams)
+        team2 = team2.get_country()
         print('{0} vs {1}'.format(team1, team2))
         while team1 == team2:
-            team1 = choice(list(teams))
-            team2 = choice(list(teams))
+            team1 = choice(teams)
+            team2 = choice(teams)
         return team1, team2

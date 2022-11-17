@@ -2,6 +2,8 @@ from tkinter import *
 import tkinter as tk
 from PIL import ImageTk, Image
 
+# TODO: CHANGE CANCELLED FROM CHECKBOX TO A FIELD WITH A COUNTER
+# TODO: disable screen resizing
 
 class DetailScreen:
     def __init__(self, window2, teams):
