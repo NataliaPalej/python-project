@@ -4,13 +4,12 @@ from Team import Team
 from DetailsScreen import DetailScreen
 from TournamentScreen import TournamentScreen
 
-# TODO: disable screen resizing
-
-
 window = tk.Tk()
 window.configure(bg='beige')
 window.title("Volleyball Matches")
 window.geometry("600x600")
+
+window.resizable(False, False)
 
 poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, False)
 bulgaria = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, True)
@@ -39,14 +38,14 @@ team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
 # tournament screen
 def create_tournament():
     window2 = Toplevel(window, bg="grey85")
-    window2.geometry("600x600")
+    window2.geometry("570x500")
     window2.title("Tournament")
     TournamentScreen(window2, team_list)
 
 # details screen
 def details_screen():
     window2 = Toplevel(window, bg="grey85")
-    window2.geometry("460x390")
+    window2.geometry("600x500")
     window2.title("Volleyball Matches")
     detail_screen = DetailScreen(window2, team_list)
     detail_screen.display(0)
