@@ -11,12 +11,12 @@ window.geometry("600x600")
 
 window.resizable(False, False)
 
-poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, 2)
+poland = Team("Polski Związek Piłki Siatkowej", "Poland", 14, False, 0)
 bulgaria = Team("Bulgarian Volleyball Federation", "Bulgaria", 14, False, 0)
 croatia = Team("Croatian Volleyball Federation", "Croatia", 14, False, 0)
-germany = Team("East German Volleyball Federation", "Germany", 11, False, 1)
+germany = Team("East German Volleyball Federation", "Germany", 11, False, 0)
 netherlands = Team("Nederlandse Volleybalbond", "Netherlands", 21, False, 0)
-hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, 0)
+hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, False, 0)
 
 team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
 

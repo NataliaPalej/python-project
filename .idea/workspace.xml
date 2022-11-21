@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0de5d115-433d-48e3-8108-f1edc80f26ef" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DetailsScreen.py" afterPath="$PROJECT_DIR$/DetailsScreen.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Team.py" afterPath="$PROJECT_DIR$/Team.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MenuScreen.py" afterPath="$PROJECT_DIR$/MenuScreen.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TournamentScreen.py" afterPath="$PROJECT_DIR$/TournamentScreen.py" />
     </list>
     <ignored path="python-project.iws" />
@@ -47,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TournamentScreen.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TournamentScreen.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TournamentScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.93318146">
+              <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -59,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MenuScreen.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MenuScreen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MenuScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43432042">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -74,7 +72,7 @@
       <file leaf-file-name="DetailsScreen.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DetailsScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.805555">
+            <state vertical-scroll-proportion="0.0">
               <caret line="134" column="45" selection-start-line="134" selection-start-column="45" selection-end-line="134" selection-end-column="45" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -108,8 +106,8 @@
         <option value="$PROJECT_DIR$/teams" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/DetailsScreen.py" />
-        <option value="$PROJECT_DIR$/MenuScreen.py" />
         <option value="$PROJECT_DIR$/Team.py" />
+        <option value="$PROJECT_DIR$/MenuScreen.py" />
         <option value="$PROJECT_DIR$/TournamentScreen.py" />
       </list>
     </option>
@@ -145,7 +143,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -180,8 +180,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="RunManager" selected="Python.MenuScreen">
@@ -692,7 +690,6 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08452192" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977644" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -703,6 +700,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977644" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -725,6 +723,52 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/teams">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Team.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TournamentScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MenuScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DetailsScreen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="45" selection-start-line="134" selection-start-column="45" selection-end-line="134" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/teams">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -942,7 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28397873">
           <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +999,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DetailsScreen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.805555">
+        <state vertical-scroll-proportion="0.0">
           <caret line="134" column="45" selection-start-line="134" selection-start-column="45" selection-end-line="134" selection-end-column="45" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -972,22 +1015,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TournamentScreen.py">
+    <entry file="file://$PROJECT_DIR$/MenuScreen.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+          <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MenuScreen.py">
+    <entry file="file://$PROJECT_DIR$/TournamentScreen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43432042">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.93318146">
+          <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

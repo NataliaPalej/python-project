@@ -6,6 +6,7 @@ from random import choice
 
 class TournamentScreen:
     def __init__(self, window2, teams):
+        self.win = window2
         self.team1, self.team2, self.team1_obj, self.team2_obj = self.get_random_teams(teams)
 
         frame2 = tk.Frame(window2, bg="grey85", pady=170)
@@ -98,9 +99,15 @@ class TournamentScreen:
             self.team1_obj.mark_win(score1)
             self.team2_obj.mark_loss(score2)
 
+        self.exit()
+
     def cancel(self):
         self.team2_obj.mark_cancelled()
         self.team1_obj.mark_cancelled()
+        self.exit()
 
+
+    def exit(self):
+        self.win.destroy()
 
 
