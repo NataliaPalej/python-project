@@ -20,21 +20,6 @@ hungary = Team("Magyar Röplabda Szövetség", "Hungary", 18, True, 0)
 
 team_list = [poland, bulgaria, croatia, germany, netherlands, hungary]
 
-
-# TODO: IF YOU CHANGE YOUR MIND
-# def load_teams(file_path):
-#     with open(file_path, 'r') as _f:
-#         for _team in _f.readlines():
-#             _team = _team.encode("windows-1252").decode("utf-8")
-#             for _data in _team.split(','):
-#                 print(_data)
-#             print("\n")
-#     teams = []
-#     return teams
-#
-#
-# load_teams('teams')
-
 # tournament screen
 def create_tournament():
     window2 = Toplevel(window, bg="grey85")
