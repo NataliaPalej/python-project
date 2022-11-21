@@ -3,7 +3,7 @@ class Team:
         self.__association = association
         self.__country = country
         self.__squad = squad
-        self.__points = 0
+        self.__score = 0
         self.__played = 0
         self.__wins = 0
         self.__draws = 0
@@ -12,7 +12,7 @@ class Team:
         self.__cancelled = cancelled
 
     def reset_all(self):
-        self.__points = 0
+        self.__score = 0
         self.__played = 0
         self.__wins = 0
         self.__losses = 0
@@ -23,23 +23,14 @@ class Team:
     def get_country(self):
         return self.__country
 
-    def add_goals(self, points):
-        self.__points += points
-
-    def get_goals(self):
-        return self.__goals
-
     def get_squad(self):
         return self.__squad
 
     def get_association(self):
         return self.__association
 
-    def get_country(self):
-        return self.__country
-
-    def get_points(self):
-        return self.__points
+    def get_score(self):
+        return self.__score
 
     def get_played(self):
         return self.__played
@@ -68,19 +59,20 @@ class Team:
         else:
             return int(100 * (self.__wins / self.__played))
 
-    def mark_win(self):
+    def mark_win(self, score):
         self.__played += 1
         self.__wins += 1
-        self.__points += 2
+        self.__score += score
 
-    def mark_draw(self):
+    def mark_draw(self, score):
         self.__played += 1
         self.__draws += 1
-        self.__points += 1
+        self.__score += score
 
-    def mark_loss(self):
+    def mark_loss(self, score):
         self.__played += 1
         self.__losses += 1
+        self.__score += score
 
-    def canceled(self):
+    def mark_cancelled(self):
         self.__cancelled += 1

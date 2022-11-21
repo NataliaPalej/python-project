@@ -6,7 +6,7 @@ from random import choice
 
 class TournamentScreen:
     def __init__(self, window2, teams):
-        team1, team2 = self.get_random_teams(teams)
+        self.team1, self.team2, self.team1_obj, self.team2_obj = self.get_random_teams(teams)
 
         frame2 = tk.Frame(window2, bg="grey85", pady=170)
         frame2.place(x=0, y=0)
@@ -15,12 +15,12 @@ class TournamentScreen:
         window2.resizable(False, False)
 
         # placing image on screen
-        self.img = ImageTk.PhotoImage(Image.open("images/" + team1.lower() + ".jpg"))
+        self.img = ImageTk.PhotoImage(Image.open("images/" + self.team1.lower() + ".jpg"))
         self.panel = tk.Label(frame2, image=self.img)
         self.panel.image = self.img
         self.panel.place(x=115, y=-110)
 
-        self.img2 = ImageTk.PhotoImage(Image.open("images/" + team2.lower() + ".jpg"))
+        self.img2 = ImageTk.PhotoImage(Image.open("images/" + self.team2.lower() + ".jpg"))
         self.panel = tk.Label(frame2, image=self.img2)
         self.panel.image = self.img2
         self.panel.place(x=390, y=-110)
@@ -30,13 +30,13 @@ class TournamentScreen:
         self.vs.place(x=270, y=-95)
 
         # First random country
-        self.team1_label = Label(frame2, text=team1, fg="black", font=("courier", 16, "bold"), borderwidth=1,
+        self.team1_label = Label(frame2, text=self.team1, fg="black", font=("courier", 16, "bold"), borderwidth=1,
                                  relief="solid")
         self.team1_label.configure(height=2, width=20)
         self.team1_label.grid(column=2, row=0, padx=10)
 
         # Second random country
-        self.team2_label = Label(frame2, text=team2, fg="black", font=("courier", 16, "bold"), borderwidth=1,
+        self.team2_label = Label(frame2, text=self.team2, fg="black", font=("courier", 16, "bold"), borderwidth=1,
                                  relief="solid")
         self.team2_label.configure(height=2, width=20)
         self.team2_label.grid(column=3, row=0, padx=10, pady=5)
@@ -58,7 +58,7 @@ class TournamentScreen:
 
         # submit tournament result
         self.button1 = Button(frame2, text="Submit", fg="black", bg="chartreuse3", font=("arial", 14, "bold"),
-                              command=self.submit)
+                              command=lambda: self.submit(score_team1, score_team2))
         self.button1.place(x=150, y=150)
         self.button1.configure(height=2, width=20)
 
@@ -68,16 +68,13 @@ class TournamentScreen:
         self.button2.place(x=150, y=220)
         self.button2.configure(width=20, height=2)
 
-    # GUI display, will not be duplicated with multiple presses
-    def write_message2(self):
-        self.Label.pack(anchor='nw', padx=20, side=BOTTOM)
-        self.Label.configure(bg='cyan')
-
     @staticmethod
     def get_random_teams(teams):
         team1 = choice(teams)
-        team1 = team1.get_country()
         team2 = choice(teams)
+        team1_obj = team1
+        team2_obj = team2
+        team1 = team1.get_country()
         team2 = team2.get_country()
         print('{0} vs {1}'.format(team1, team2))
         while team1 == team2:
@@ -85,20 +82,25 @@ class TournamentScreen:
             team1 = team1.get_country()
             team2 = choice(teams)
             team2 = team2.get_country()
-        return team1, team2
+        return team1, team2, team1_obj, team2_obj
 
     def submit(self, score1, score2):
-        # if score is the same, mark draw for both teams
-        score1 = self.score_team1.get()
-        score2 = self.score_team2.get()
+        score1 = int(score1.get())
+        score2 = int(score2.get())
+
         if score1 == score2:
-            self.mark_draw()
-        # if team1 has lower score than team2, mark loss to team1 and win to team2
-        elif score1 < score2:
-            self.mark_loss()
-        # if team2 has bigger score than team2, mark win for team1 and loss for team2
-        elif score1 > score2:
-            self.mark_win()
+            self.team1_obj.mark_draw(score1)
+            self.team2_obj.mark_draw(score2)
+        if int(score1) < int(score2):
+            self.team2_obj.mark_win(score2)
+            self.team1_obj.mark_loss(score1)
+        elif int(score1) > int(score2):
+            self.team1_obj.mark_win(score1)
+            self.team2_obj.mark_loss(score2)
 
     def cancel(self):
-        self.canceled()
+        self.team2_obj.mark_cancelled()
+        self.team1_obj.mark_cancelled()
+
+
+

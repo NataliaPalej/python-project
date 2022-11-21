@@ -116,7 +116,7 @@ class DetailScreen:
         self.labelBlank.grid(row=16, column=0, columnspan=2, sticky=W+E)
 
         # reset
-        self.reset = Button(self.frame, text="RESET", fg="black", bg="firebrick3", font=("arial", 10, "bold"), command=self.clear_data)
+        self.reset = Button(self.frame, text="RESET", fg="black", bg="firebrick3", font=("arial", 10, "bold"), command=lambda: self.clear_data(self.current))
         self.reset.grid(row=17, column=0, columnspan=4, sticky=W+E)
 
         # previous and next button
@@ -154,7 +154,7 @@ class DetailScreen:
         self.losses_entry.insert(END, team.get_losses())
 
         self.points_entry.delete(0, END)
-        self.points_entry.insert(END, team.get_points())
+        self.points_entry.insert(END, team.get_score())
 
         self.cancelled.delete(0, END)
         self.cancelled.insert(END, team.get_cancelled())
@@ -185,15 +185,10 @@ class DetailScreen:
         self.panel.configure(image=img)
         self.panel.image = img
 
-    def clear_data(self):
-        self.played_entry.delete(0, END)
-        self.wins_entry.delete(0, END)
-        self.losses_entry.delete(0, END)
-        self.draws_entry.delete(0, END)
-        self.wins_per.delete(0, END)
-        self.cancelled.delete(0, END)
-        self.points_entry.delete(0, END)
-        self.var_cb1.set(0)
+    def clear_data(self, index):
+        team = self.team_list[index]
+        team.reset_all()
+        self.display(self.current)
 
     def percent_win(self):
         result = self.team.get_percent_win()
