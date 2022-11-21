@@ -17,6 +17,8 @@ class Team:
         self.__wins = 0
         self.__losses = 0
         self.__draws = 0
+        self.__injury = False
+        self.__cancelled = 0
 
     def get_country(self):
         return self.__country
@@ -80,3 +82,5 @@ class Team:
         self.__played += 1
         self.__losses += 1
 
+    def canceled(self):
+        self.__cancelled += 1
