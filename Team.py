@@ -59,6 +59,12 @@ class Team:
         else:
             return int(100 * (self.__wins / self.__played))
 
+    def get_percent_loss(self):
+        if self.__played == 0:
+            return 0
+        else:
+            return int(100 * (self.__losses / self.__played))
+
     def mark_win(self, score):
         self.__played += 1
         self.__wins += 1

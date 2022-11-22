@@ -9,8 +9,16 @@ class TournamentScreen:
         self.win = window2
         self.team1, self.team2, self.team1_obj, self.team2_obj = self.get_random_teams(teams)
 
-        frame2 = tk.Frame(window2, bg="grey85", pady=170)
+        bg = ImageTk.PhotoImage(Image.open("images/tournament.jpg"))
+
+        frame2 = tk.Frame(window2, pady=170)
         frame2.place(x=0, y=0)
+        self.panel = tk.Label(frame2, image=bg)
+        self.panel.image = bg
+        self.panel.place(x=-330, y=-300)
+        #myBG = Label(frame2, image=bg)
+        #myBG.place(x=0, y=0, relwidth=1, relheight=1)
+
 
         # disable window resize
         window2.resizable(False, False)
@@ -27,7 +35,7 @@ class TournamentScreen:
         self.panel.place(x=390, y=-110)
 
         # vs label
-        self.vs = Label(frame2, text="vs", fg="black", bg="grey85", font=("courier", 16, "bold"))
+        self.vs = Label(frame2, text="vs", fg="black", font=("courier", 16, "bold"))
         self.vs.place(x=270, y=-95)
 
         # First random country
