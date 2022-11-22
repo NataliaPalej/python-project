@@ -31,6 +31,9 @@ def create_tournament():
     window2.title("Tournament")
     TournamentScreen(window2, team_list)
 
+    button = Button(window2, text="Close", width=100, height=2, command=window2.destroy, font=("arial", 10, "bold"))
+    button.pack(side=tk.BOTTOM)
+
 
 # details screen
 def details_screen():
