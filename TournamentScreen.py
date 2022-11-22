@@ -16,9 +16,6 @@ class TournamentScreen:
         self.panel = tk.Label(frame2, image=bg)
         self.panel.image = bg
         self.panel.place(x=-330, y=-300)
-        #myBG = Label(frame2, image=bg)
-        #myBG.place(x=0, y=0, relwidth=1, relheight=1)
-
 
         # disable window resize
         window2.resizable(False, False)

@@ -36,11 +36,11 @@ def create_tournament():
 def details_screen():
     window2 = Toplevel(window, bg="grey85")
     window2.geometry("600x500")
-    window2.title("Volleyball Matches")
+    window2.title("Volleyball Teams")
     detail_screen = DetailScreen(window2, team_list)
     detail_screen.display(0)
 
-    button = Button(window2, text="Close", width=100, height=3, command=window2.destroy, font=("arial", 10, "bold"))
+    button = Button(window2, text="Close", width=100, height=2, command=window2.destroy, font=("arial", 10, "bold"))
     button.pack(side=tk.BOTTOM)
 
 
@@ -55,11 +55,13 @@ teams_button.place(x=200, y=100)
 
 
 # tournament button
-tournament_button = tk.Button(text="Create Tournament", font=('Arial', 16, 'bold'), height=2, width=15, command=create_tournament)
+tournament_button = tk.Button(text="Create Tournament", font=('Arial', 16, 'bold'), height=2, width=15,
+                              command=create_tournament)
 tournament_button.place(x=200, y=200)
 
 # exit button
-exit_button = tk.Button(text="Exit", width=15, font=('Arial', 16, 'bold'), height=2, command=exit_app, bg="gray", fg="black")
+exit_button = tk.Button(text="Exit", width=15, font=('Arial', 16, 'bold'), height=2, command=exit_app,
+                        bg="gray", fg="black")
 exit_button.place(x=200, y=450)
 
 window.mainloop()

@@ -11,22 +11,29 @@ class DetailScreen:
 
         # ===== GUI ===== #
         self.frame = tk.Frame(window2, width=635, height=590)
-        window2.resizable(False, False)
+
         self.frame.place(x=20, y=20)
 
+        bg = ImageTk.PhotoImage(Image.open("images/volleyball.jpg"))
+
+        self.panel = tk.Label(self.frame, image=bg)
+        self.panel.image = bg
+        self.panel.place(x=0, y=0, relwidth=1, relheight=1)
+        window2.resizable(False, False)
+
         # title label
-        self.label1 = Label(self.frame, text="Volleyball Teams", fg="black", bg="pink", font=("arial", 16, "bold"))
+        self.label1 = Label(self.frame, text="Volleyball Teams", fg="white", bg="black", font=("arial", 16, "bold"))
         self.label1.grid(row=0, column=0, columnspan=4, padx=10, pady=10)  # place on screen
 
         # association
-        self.association = Label(self.frame, text="Association", fg="black", width=10, font=("arial", 10, "bold"))
+        self.association = Label(self.frame, text="Association", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
         self.association.grid(row=1, column=0, padx=54, pady=3)
         self.association_entry = Entry(self.frame)
         self.association_entry.insert(END, '')
         self.association_entry.grid(row=1, column=1, columnspan=3, sticky=W + E)
 
         # country
-        self.country = Label(self.frame, text="Country", fg="black", width=10, font=("arial", 10, "bold"))
+        self.country = Label(self.frame, text="Country", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
         self.country.grid(row=2, column=0, pady=3)
         self.country_entry = Entry(self.frame)
         self.country_entry.insert(END, '')
@@ -39,63 +46,66 @@ class DetailScreen:
         self.panel.place(x=335, y=90)
 
         # squad
-        self.squad = Label(self.frame, text="Squad", fg="black", width=10, font=("arial", 10, "bold"))
+        self.squad = Label(self.frame, text="Squad", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
         self.squad.grid(row=3, column=0, pady=3)
         self.squad_entry = Entry(self.frame, width=20)
         self.squad_entry.insert(END, '0')
         self.squad_entry.grid(row=3, column=1, sticky=W + E)
 
         # played
-        self.played = Label(self.frame, text="Played", fg="black", width=10, font=("arial", 10, "bold"))
+        self.played = Label(self.frame, text="Played", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
         self.played.grid(row=4, column=0, pady=3)
         self.played_entry = Entry(self.frame)
         self.played_entry.insert(END, '0')
         self.played_entry.grid(row=4, column=1, sticky=W + E)
 
         # wins
-        self.wins = Label(self.frame, text="Wins", fg="black", width=10, font=("arial", 10, "bold"))
+        self.wins = Label(self.frame, text="Wins", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
         self.wins.grid(row=5, column=0, pady=3)
         self.wins_entry = Entry(self.frame)
         self.wins_entry.insert(END, '0')
         self.wins_entry.grid(row=5, column=1, sticky=W + E)
 
         # losses
-        self.losses = Label(self.frame, text="Losses", fg="black", font=("arial", 10, "bold"))
+        self.losses = Label(self.frame, text="Losses", fg="black", bg="dodgerblue1", width=10,
+                            font=("arial", 10, "bold"),borderwidth=1, relief="solid")
         self.losses.grid(row=5, column=2)
         self.losses_entry = Entry(self.frame)
         self.losses_entry.insert(END, '0')
         self.losses_entry.grid(row=5, column=3, sticky=W + E)
 
         # draws
-        self.draws = Label(self.frame, text="Draws", fg="black", width=10, font=("arial", 10, "bold"))
-        self.draws.grid(row=6, column=0, sticky=W + E)
+        self.draws = Label(self.frame, text="Draws", fg="black", bg="dodgerblue1", width=10,
+                           font=("arial", 10, "bold"))
+        self.draws.grid(row=6, column=0, pady=3)
         self.draws_entry = Entry(self.frame)
         self.draws_entry.insert(END, '0')
         self.draws_entry.grid(row=6, column=1, sticky=W + E)
 
-        # points
-        self.points = Label(self.frame, text="Scores", fg="black", width=10, font=("arial", 10, "bold"))
-        self.points.grid(row=7, column=0, sticky=W + E)
+        # scores
+        self.points = Label(self.frame, text="Scores", fg="black", bg="dodgerblue1", width=10, font=("arial", 10, "bold"))
+        self.points.grid(row=7, column=0, pady=3)
         self.points_entry = Entry(self.frame)
         self.points_entry.insert(END, '0')
         self.points_entry.grid(row=7, column=1, sticky=W + E)
 
         # checkbox injury
         self.var_cb1 = IntVar()  # 0 unchecked, 1 checked
-        self.cb1 = Checkbutton(self.frame, text="Injury", variable=self.var_cb1)
-        self.cb1.grid(row=8, column=0, pady=3, sticky=W + E)
+        self.cb1 = Checkbutton(self.frame, text="Injury", variable=self.var_cb1, width=8, borderwidth=1,
+                               relief="solid", bg="darkgoldenrod1", fg="black")
+        self.cb1.grid(row=8, column=0, pady=3)
 
         # cancelled
-        self.cancelled = Label(self.frame, text="Cancelled", fg="black", bg="indianred1", width=15,
+        self.cancelled = Label(self.frame, text="Cancelled", fg="black", bg="darkgoldenrod1", width=15,
                                font=("arial", 10, "bold"), borderwidth=1, relief="solid")
-        self.cancelled.place(x=192, y=240)
+        self.cancelled.place(x=192, y=252)
 
         self.cancelled = Entry(self.frame, text="Cancelled")
         self.cancelled.insert(END, '0')
         self.cancelled.grid(row=8, column=2, sticky=W + E)
 
         # wins percentage
-        self.win_percent_button = Label(self.frame, text="Wins %", fg="black", bg="pink",
+        self.win_percent_button = Label(self.frame, text="Wins %", fg="black", bg="darkgoldenrod1",
                                         font=("arial", 10, "bold"), borderwidth=1, relief="solid")
         self.win_percent_button.grid(row=9, column=0, sticky=W + E, padx=10, pady=3)
 
@@ -104,7 +114,7 @@ class DetailScreen:
         self.wins_per.grid(row=9, column=1, sticky=W + E, columnspan=2)
 
         # loss percentage
-        self.loss_percent_button = Label(self.frame, text="Loss %", fg="black", bg="pink",
+        self.loss_percent_button = Label(self.frame, text="Loss %", fg="black", bg="darkgoldenrod1",
                                          font=("arial", 10, "bold"), borderwidth=1, relief="solid")
         self.loss_percent_button.grid(row=10, column=0, sticky=W + E, padx=10)
 
@@ -113,28 +123,24 @@ class DetailScreen:
         self.loss_per.grid(row=10, column=1, sticky=W + E, columnspan=2)
 
         # blank line
-        self.labelBlank = Label(self.frame, text=" ", width=10, font=("arial", 10, "bold"))
-        self.labelBlank.grid(row=11, column=0, columnspan=2, sticky=W + E)
-
-        # blank line
-        self.labelBlank = Label(self.frame, text=" ", width=10, font=("arial", 10, "bold"))
-        self.labelBlank.grid(row=12, column=0, columnspan=2, sticky=W + E)
+        self.labelBlank = Label(self.frame, bg="black")
+        self.labelBlank.grid(row=11)
 
         # reset
-        self.reset = Button(self.frame, text="RESET", fg="black", bg="firebrick3", font=("arial", 10, "bold"),
+        self.reset = Button(self.frame, text="RESET", fg="black", bg="white", font=("arial", 10, "bold"),
                             command=lambda: self.clear_data(self.current))
-        self.reset.grid(row=12, column=0, columnspan=2, sticky=W + E)
+        self.reset.grid(row=12, column=0, columnspan=2, sticky=W + E, padx=3)
 
         # blank line
-        self.labelBlank = Label(self.frame, text=" ", width=10, font=("arial", 10, "bold"))
-        self.labelBlank.grid(row=13, column=0, columnspan=2, sticky=W + E)
+        self.labelBlank = Label(self.frame, bg="black")
+        self.labelBlank.grid(row=13)
 
         # previous and next button
-        self.previous = Button(self.frame, text="Previous", fg="black", bg="skyblue1", font=("arial", 10, "bold"),
+        self.previous = Button(self.frame, text="Previous", fg="black", bg="darkgoldenrod1", font=("arial", 10, "bold"),
                                command=self.previous_button)
         self.previous.grid(row=14, column=0, sticky=W + E, pady=3, columnspan=2)
 
-        self.next_button = Button(self.frame, text="Next", fg="black", bg="pink", font=("arial", 10, "bold"),
+        self.next_button = Button(self.frame, text="Next", fg="black", bg="dodgerblue3", font=("arial", 10, "bold"),
                                   command=self.next_button)
         self.next_button.grid(row=14, column=2, columnspan=3, sticky=W + E)
 
