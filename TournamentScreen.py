@@ -82,12 +82,10 @@ class TournamentScreen:
         team2_obj = team2
         team1 = team1.get_country()
         team2 = team2.get_country()
-        print('{0} vs {1}'.format(team1, team2))
         while team1 == team2:
-            team1 = choice(teams)
-            team1 = team1.get_country()
             team2 = choice(teams)
             team2 = team2.get_country()
+        print('{0} vs {1}'.format(team1, team2))
         return team1, team2, team1_obj, team2_obj
 
     def submit(self, score1, score2):
@@ -111,8 +109,5 @@ class TournamentScreen:
         self.team1_obj.mark_cancelled()
         self.exit()
 
-
     def exit(self):
         self.win.destroy()
-
-
